@@ -63,3 +63,10 @@ pre {
 }
 
 .error { color: #e5484d; }
+
+.status { font-size: 0.6em; font-weight: normal; }
+.status.online { color: #30a46c; }
+.status.offline { color: #e5484d; }
+
+.messages { list-style: none; padding: 0; margin: 0; }
+.messages li { padding: 6px 0; border-bottom: 1px solid var(--surface); }

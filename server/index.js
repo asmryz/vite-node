@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import express from 'express';
 import apiRouter from './routes/api.js';
+import { setupSocket } from './socket.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -13,6 +14,9 @@ const port = Number(process.env.PORT) || 3000;
 async function start() {
   const app = express();
   const server = http.createServer(app);
+
+  // --- Socket.IO (shares the HTTP server, served at /socket.io/) ----------
+  setupSocket(server);
 
   app.use(express.json());
 
